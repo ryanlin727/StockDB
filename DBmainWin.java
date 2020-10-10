@@ -33,7 +33,7 @@ public class DBmainWin extends Frame {
 				System.exit(0);
 			}
 		});
-		this.setTitle("®w¦s¬ö¿ý¨t²Î");
+		this.setTitle("åº«å­˜ç´€éŒ„ç³»çµ±");
 		this.setVisible(true);
 	}
 

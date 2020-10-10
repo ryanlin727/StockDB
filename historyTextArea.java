@@ -10,7 +10,7 @@ public class historyTextArea extends Panel {
 		JTextArea jTextArea = new JTextArea();
 	    jTextArea.setLineWrap(true);
 	    JScrollPane jScrollPane = new JScrollPane(jTextArea);
-	    jTextArea.setText("¾ú¥v10µ§¿é¤J¬ö¿ı");
+	    jTextArea.setText("æ­·å²10ç­†è¼¸å…¥ç´€éŒ„");
 	    
 	    this.add(jTextArea);
 	}

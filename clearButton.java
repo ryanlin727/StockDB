@@ -3,6 +3,6 @@ package StockDB;
 public class clearButton extends DBbutton {
 	clearButton()
 	{
-		this.setLabel("²M°£¿é¤J");
+		this.setLabel("æ¸…é™¤è¼¸å…¥");
 	}
 }

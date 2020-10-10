@@ -9,19 +9,19 @@ public class DBcomboBox extends Panel{
 	DBcomboBox()
 	{
 		JComboBox typeComboBox = new JComboBox();
-		typeComboBox.addItem("«¬¸¹¿ï¾Ü");
-		typeComboBox.addItem("«¬¸¹1");
-		typeComboBox.addItem("«¬¸¹2");
+		typeComboBox.addItem("å‹è™Ÿé¸æ“‡");
+		typeComboBox.addItem("å‹è™Ÿ1");
+		typeComboBox.addItem("å‹è™Ÿ2");
 	    
 		JComboBox brandComboBox = new JComboBox();
-		brandComboBox.addItem("¼tµP¿ï¾Ü");
-		brandComboBox.addItem("¼tµP1");
-		brandComboBox.addItem("¼tµP2");
+		brandComboBox.addItem("å» ç‰Œé¸æ“‡");
+		brandComboBox.addItem("å» ç‰Œ1");
+		brandComboBox.addItem("å» ç‰Œ2");
 		
 		JComboBox actionComboBox = new JComboBox();
-		actionComboBox.addItem("°Ê§@¿ï¾Ü");
-		actionComboBox.addItem("¶i³f");
-		actionComboBox.addItem("¥X³f");
+		actionComboBox.addItem("å‹•ä½œé¸æ“‡");
+		actionComboBox.addItem("é€²è²¨");
+		actionComboBox.addItem("å‡ºè²¨");
 		
 		this.setLayout(new GridLayout(2, 2));
 		this.add(brandComboBox);
