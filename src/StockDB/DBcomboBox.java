@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class DBcomboBox extends Panel{
 	DBcomboBox()
-	{
+	{	
 		JComboBox typeComboBox = new JComboBox();
 		typeComboBox.addItem("型號選擇");
 		typeComboBox.addItem("型號1");
@@ -23,7 +23,7 @@ public class DBcomboBox extends Panel{
 		actionComboBox.addItem("進貨");
 		actionComboBox.addItem("出貨");
 		
-		this.setLayout(new GridLayout(2, 2));
+		this.setLayout(new FlowLayout());
 		this.add(brandComboBox);
 	    this.add(typeComboBox);
 	    this.add(actionComboBox);

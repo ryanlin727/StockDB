@@ -5,26 +5,23 @@ import java.awt.event.*;
 import javax.swing.JComboBox;
 
 public class DBmainWin extends Frame {
-	Dimension size=new Dimension(500,500);
+	Dimension size=new Dimension(500,330);
 	public DBcomboBox comboBox;
-	public enterButton enButton;
-	public clearButton clButton;
+	public centerBlock ceBlock;
 	public historyTextArea hiTextArea;
 	DBmainWin()
 	{
 		this.setSize(size);
 		comboBox=new DBcomboBox();
 		
-		this.setLayout(new FlowLayout());
-		this.add(comboBox);
+		this.setLayout(new BorderLayout());
+		this.add(comboBox, BorderLayout.NORTH);
 		
-		enButton = new enterButton();
-		this.add(enButton);
-		clButton = new clearButton();
-		this.add(clButton);
+		ceBlock=new centerBlock();
+		this.add(ceBlock, BorderLayout.CENTER);
 		
 		hiTextArea = new historyTextArea();
-		this.add(hiTextArea);
+		this.add(hiTextArea, BorderLayout.SOUTH);
 		
 		this.addWindowListener(new WindowAdapter()
 		{
@@ -33,6 +30,7 @@ public class DBmainWin extends Frame {
 				System.exit(0);
 			}
 		});
+		this.setBackground(Color.gray);
 		this.setTitle("庫存紀錄系統");
 		this.setVisible(true);
 	}

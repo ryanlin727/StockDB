@@ -1,7 +1,6 @@
 package StockDB;
 
-import java.awt.Panel;
-
+import java.awt.*;
 import javax.swing.*;
 
 public class historyTextArea extends Panel {
@@ -10,7 +9,8 @@ public class historyTextArea extends Panel {
 		JTextArea jTextArea = new JTextArea();
 	    jTextArea.setLineWrap(true);
 	    JScrollPane jScrollPane = new JScrollPane(jTextArea);
-	    jTextArea.setText("歷史10筆輸入紀錄");
+	    jTextArea.setSize(450,450);;
+	    jTextArea.setText("歷史輸入紀錄\n\n\n\n\n\n\n\n\n");
 	    
 	    this.add(jTextArea);
 	}
