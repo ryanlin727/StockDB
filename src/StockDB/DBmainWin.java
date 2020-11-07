@@ -1,39 +1,33 @@
 package StockDB;
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
 
-import javax.swing.JComboBox;
-
-public class DBmainWin extends Frame {
+public class DBmainWin extends JFrame {
 	Dimension size=new Dimension(500,330);
-	public DBcomboBox comboBox;
-	public centerBlock ceBlock;
-	public historyTextArea hiTextArea;
+	
+	public tabPanel tabPanel;
+
 	DBmainWin()
 	{
 		this.setSize(size);
-		comboBox=new DBcomboBox();
-		
 		this.setLayout(new BorderLayout());
-		this.add(comboBox, BorderLayout.NORTH);
 		
-		ceBlock=new centerBlock();
-		this.add(ceBlock, BorderLayout.CENTER);
-		
-		hiTextArea = new historyTextArea();
-		this.add(hiTextArea, BorderLayout.SOUTH);
+		tabPanel=new tabPanel(this);
 		
 		this.addWindowListener(new WindowAdapter()
 		{
 			public void windowClosing(WindowEvent e)
 			{
-				System.exit(0);
+				DBmainWin.this.dispose();
 			}
 		});
+		
+
 		this.setBackground(Color.gray);
-		this.setTitle("åº«å­˜ç´€éŒ„ç³»çµ±");
+		this.setTitle("®w¦s¬ö¿ý¨t²Î");
 		this.setVisible(true);
 	}
-
-
 }

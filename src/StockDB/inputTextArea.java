@@ -8,7 +8,7 @@ public class inputTextArea extends Panel {
 	{
 		JTextArea inTextArea = new JTextArea();
 		inTextArea.setLineWrap(true);
-		inTextArea.setText("è«‹åœ¨æ­¤è¼¸å…¥æ•¸é‡");
+		inTextArea.setText("½Ğ¦b¦¹¿é¤J¼Æ¶q");
     
 		this.add(inTextArea);
 	}

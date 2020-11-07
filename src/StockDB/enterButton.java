@@ -3,6 +3,6 @@ package StockDB;
 public class enterButton extends DBbutton {
 	enterButton()
 	{
-		this.setLabel("ç¢ºå®šè¼¸å…¥");
+		this.setLabel("½T©w¿é¤J");
 	}
 }
