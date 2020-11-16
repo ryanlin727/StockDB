@@ -1,11 +1,11 @@
 package StockDB;
 
-import java.awt.*;
 import java.awt.event.*;
 
-public class DBbutton extends Button {
-	DBbutton()
+public class clientButton extends DBbutton{
+	clientButton()
 	{
+		this.setLabel("½T©w¿é¤J");
 		this.addMouseListener(new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)
@@ -14,9 +14,8 @@ public class DBbutton extends Button {
 			}
 		});
 	}
-
-	private void doSomthing() {
-		// TODO Auto-generated method stub
+	private void doSomthing()
+	{
 		
 	}
 }
