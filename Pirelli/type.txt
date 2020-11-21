@@ -1,0 +1,21 @@
+C P1
+C P1 SUV
+C P1 Verda
+C P1 r-f
+C P6
+C P7
+C P7 r-f
+NERO
+NEROgt
+P ZERO
+P ZERO ROSSO
+P ZERO ROSSOd
+P ZERO r-f
+S-VERD
+S-VERD r-f
+S-VEas
+S-VEas r-f
+S-ZERO
+Scorpion ATR
+Scorpion STR
+Scorpion STRa

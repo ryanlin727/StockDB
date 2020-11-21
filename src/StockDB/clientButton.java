@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class clientButton extends DBbutton{
 	clientButton()
 	{
-		this.setLabel("確定輸入");
+		this.setLabel("開始查詢");
 		this.addMouseListener(new MouseAdapter()
 		{
 			public void mouseClicked(MouseEvent e)

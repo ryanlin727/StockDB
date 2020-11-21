@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class DBmainWin extends JFrame {
-	Dimension size=new Dimension(500,330);
+	Dimension size=new Dimension(600,330);
 	
 	public tabPanel tabPanel;
 
