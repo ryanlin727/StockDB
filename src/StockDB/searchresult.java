@@ -4,15 +4,16 @@ import java.awt.*;
 import javax.swing.*;
 
 public class searchresult extends Panel {
+	public static JTextArea jTextArea = new JTextArea(10,50);
+	public static JScrollPane jScrollPane = new JScrollPane(jTextArea);
 	searchresult()
 	{
-		JTextArea jTextArea = new JTextArea();
+		
+		jScrollPane.setBounds(10,10,200,100);
 	    jTextArea.setLineWrap(true);
-	    JScrollPane jScrollPane = new JScrollPane(jTextArea);
-	    jTextArea.setSize(450,450);;
-	    jTextArea.setText("查詢結果\n\n\n\n\n\n\n\n\n");
+	    jTextArea.setText("查詢結果");
 	    
-	    this.add(jTextArea);
+	    this.add(jScrollPane);
 	}
 }
 

@@ -29,5 +29,6 @@ public class DBmainWin extends JFrame {
 		this.setBackground(Color.gray);
 		this.setTitle("®w¦s¬ö¿ý¨t²Î");
 		this.setVisible(true);
+
 	}
 }

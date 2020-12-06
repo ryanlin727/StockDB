@@ -7,7 +7,7 @@ public class northBlock extends Panel {
 		public mainbrandComboBox comboBox1;
 		public maintypeComboBox comboBox2;
 		public mainsizeComboBox comboBox3;
-		public static actionComboBox comboBox4;
+		public mainactionComboBox comboBox4;
 		northBlock()
 		{
 			this.setLayout(new FlowLayout());
@@ -18,7 +18,8 @@ public class northBlock extends Panel {
 			this.add(comboBox2);
 			comboBox3=new mainsizeComboBox();
 			this.add(comboBox3);
-			comboBox4=new actionComboBox();
+			comboBox4=new mainactionComboBox();
 			this.add(comboBox4);
 		}
+		
 }

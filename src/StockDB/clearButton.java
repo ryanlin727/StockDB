@@ -1,8 +1,22 @@
 package StockDB;
 
-public class clearButton extends DBbutton {
-	clearButton()
+import java.awt.event.*;
+
+import javax.swing.JTextArea;
+
+public class clearButton extends DBbutton{
+	buttonBlock parent;
+//	mainbrandComboBox parent;
+	clearButton(buttonBlock p)
 	{
-		this.setLabel("清除輸入");
+		parent=p;
+		this.setLabel("清除輸入");	
 	}
+	public void doSomthing() {
+		StockDB.mainbrandComboBox.brandComboBox.setSelectedIndex(0);
+		StockDB.mainsizeComboBox.sizeComboBox.setSelectedIndex(0);
+		StockDB.maintypeComboBox.typeComboBox.setSelectedIndex(0);
+		StockDB.mainactionComboBox.actionComboBox.setSelectedIndex(0);
+		StockDB.inputTextArea.inTextArea.setText("");
+	}		 
 }

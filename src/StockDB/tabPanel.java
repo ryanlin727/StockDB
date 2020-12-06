@@ -11,7 +11,7 @@ public class tabPanel implements ChangeListener {
 	DBmainWin parent;
 	tabPanel(DBmainWin p)
 	{
-		parent = p;
+		parent=p;
 		JTabbedPane Tab=new JTabbedPane(JTabbedPane.TOP);
 		Tab.add("輸入模式",new DBinputWin());
 	    Tab.add("查詢模式",new DBsearchWin());

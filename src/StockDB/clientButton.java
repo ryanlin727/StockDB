@@ -14,7 +14,7 @@ public class clientButton extends DBbutton{
 			}
 		});
 	}
-	private void doSomthing()
+	public void doSomthing()
 	{
 		
 	}

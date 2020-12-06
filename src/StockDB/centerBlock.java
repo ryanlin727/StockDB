@@ -5,12 +5,13 @@ import java.awt.*;
 public class centerBlock extends Panel {
 	public buttonBlock btnBlock;
 	public inputTextArea inTextArea;
-	
-	centerBlock()
+	DBinputWin parent;
+	centerBlock(DBinputWin p)
 	{
+		parent=p;
 		
 		this.setLayout(new BorderLayout());
-		btnBlock=new buttonBlock();
+		btnBlock=new buttonBlock(this);
 		this.add(btnBlock, BorderLayout.SOUTH);
 		
 		inTextArea = new inputTextArea();

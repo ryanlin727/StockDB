@@ -1,13 +1,15 @@
 package StockDB;
 
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
 import javax.swing.*;
 
 public class mainbrandComboBox extends Panel{
 	public static String ComboBoxVal;
 	public static JComboBox brandComboBox = new JComboBox();
-
+//	public clearButton clButton;
 	mainbrandComboBox()
 	{	
 		brandComboBox.addItem("½Ð¿ï¾Ü¼tµP");
@@ -35,6 +37,9 @@ public class mainbrandComboBox extends Panel{
 		
 		this.setLayout(new FlowLayout());
 		this.add(brandComboBox);
+//		clButton = new clearButton(this);
+//		this.add(clButton);
 
 	}
+	
 }

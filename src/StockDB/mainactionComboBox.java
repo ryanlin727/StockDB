@@ -1,11 +1,13 @@
 package StockDB;
 
 import java.awt.*;
+
 import javax.swing.*;
 
-public class actionComboBox extends Panel {
+public class mainactionComboBox extends Panel {
+
 	public static JComboBox actionComboBox = new JComboBox();
-	actionComboBox()
+	mainactionComboBox()
 	{
 		
 		actionComboBox.addItem("請選擇動作");

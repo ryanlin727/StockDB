@@ -15,7 +15,7 @@ public class DBbutton extends Button {
 		});
 	}
 
-	private void doSomthing() {
+	public void doSomthing() {
 		// TODO Auto-generated method stub
 		
 	}
