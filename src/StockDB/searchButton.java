@@ -19,8 +19,6 @@ public class searchButton extends DBbutton {
 			e.printStackTrace();
 		}
 		
-		
-		
 		this.setLabel("開始查詢");
 	}
 	
@@ -28,7 +26,6 @@ public class searchButton extends DBbutton {
 		  String serverName = "localhost";
 		  String database = "StockDB";
 		  String url = "jdbc:mysql://" + serverName + "/" + database;
-		  // 帳號和密碼
 		  String user = "root";
 		  String password = "1234";
 		  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/StockDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC","root","1234");
@@ -36,12 +33,15 @@ public class searchButton extends DBbutton {
 	}
 	
 	public void doSomthing() {
+		int count = 0;
+		
 		try
 		{
 			   conn = getConnection();
 			   String sql;
 	           sql = "SELECT * FROM tires";
 	           ResultSet rs = null;
+	           int flag=0;
 	           
 	           if(StockDB.brandComboBox.brandComboBox.getSelectedItem()=="請選擇廠牌")
 	           {
@@ -49,20 +49,20 @@ public class searchButton extends DBbutton {
 	           }
 	           else if(StockDB.typeComboBox.typeComboBox.getSelectedItem()=="請選擇系列")
 	           {
-	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? ");
+	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? ORDER BY in_warehouse_time");
 	        	   stmt.setString(1,(String)StockDB.brandComboBox.brandComboBox.getSelectedItem());
 	        	   rs = stmt.executeQuery();
 	           }
 	           else if(StockDB.sizeComboBox.sizeComboBox.getSelectedItem()=="請選擇尺寸")
 	           {
-	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? ");
+	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? ORDER BY in_warehouse_time");
 	        	   stmt.setString(1,(String)StockDB.brandComboBox.brandComboBox.getSelectedItem());
 	        	   stmt.setString(2,(String)StockDB.typeComboBox.typeComboBox.getSelectedItem());
 	        	   rs = stmt.executeQuery();
 	           }
 	           else if(StockDB.actionComboBox.actionComboBox.getSelectedItem()=="請選擇動作")
 	           {
-	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? AND size = ?");
+	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? AND size = ? ORDER BY in_warehouse_time");
 	        	   stmt.setString(1,(String)StockDB.brandComboBox.brandComboBox.getSelectedItem());
 	        	   stmt.setString(2,(String)StockDB.typeComboBox.typeComboBox.getSelectedItem());
 	        	   stmt.setString(3,(String)StockDB.sizeComboBox.sizeComboBox.getSelectedItem());
@@ -70,7 +70,7 @@ public class searchButton extends DBbutton {
 	           }
 	           else if(StockDB.actionComboBox.actionComboBox.getSelectedItem()!="請選擇動作")
 	           {
-	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? AND size = ? AND action = ?");
+	        	   stmt=conn.prepareStatement("SELECT * FROM tires WHERE brand = ? AND model = ? AND size = ? AND action = ? ORDER BY in_warehouse_time");
 	        	   stmt.setString(1,(String)StockDB.brandComboBox.brandComboBox.getSelectedItem());
 	        	   stmt.setString(2,(String)StockDB.typeComboBox.typeComboBox.getSelectedItem());
 	        	   stmt.setString(3,(String)StockDB.sizeComboBox.sizeComboBox.getSelectedItem());
@@ -81,13 +81,25 @@ public class searchButton extends DBbutton {
 	           while (rs.next())
 	           {
 	        	   	String brand  = rs.getString("brand");
-	                String size = rs.getString("size");
 	                String model = rs.getString("model");
+	                String size = rs.getString("size");
 	                int amount = rs.getInt("amount");
 	                String action = rs.getString("action");
 	                String in_warehouse_time = rs.getString("in_warehouse_time");
 	                
-	                StockDB.searchresult.jTextArea.setText(StockDB.searchresult.jTextArea.getText()+ "\n" +brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	                if(flag==0)
+	                {
+	                	StockDB.searchresult.jTextArea.setText(brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	                	flag=1;
+	                }
+	                else
+	                	StockDB.searchresult.jTextArea.setText(StockDB.searchresult.jTextArea.getText()+ "\n" +brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	                
+	                if(action.equals("出售"))
+	                	count-=amount;
+	                else
+	                	count+=amount;
+	                
 	                System.out.print(brand+" ");
 	                System.out.print(size+" ");
 	                System.out.print(model+" ");
@@ -96,25 +108,10 @@ public class searchButton extends DBbutton {
 	                System.out.print(in_warehouse_time+" ");
 	                System.out.print("\n");
 	           }
-	           /*while(rs.next()){
-	                String brand  = rs.getString("brand");
-	                String size = rs.getString("size");
-	                String model = rs.getString("model");
-	                int amount = rs.getInt("amount");
-	                String action = rs.getString("action");
-	                String in_warehouse_time = rs.getString("in_warehouse_time");
-	    
-	                System.out.print(brand+" ");
-	                System.out.print(size+" ");
-	                System.out.print(model+" ");
-	                System.out.print(amount+" ");
-	                System.out.print(action+" ");
-	                System.out.print(in_warehouse_time+" ");
-	                System.out.print("\n");
-	            }*/
-	            rs.close();
-	            stmt.close();
-	            conn.close();
+	           StockDB.searchresult.jTextArea.setText(StockDB.searchresult.jTextArea.getText() + "\n" + "此次搜尋符合條件的庫存量還有" + count);
+	           rs.close();
+	           stmt.close();
+	           conn.close();
 		} 
 		catch (SQLException e)
 		{

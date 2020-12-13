@@ -7,7 +7,6 @@ public class inputTextArea extends Panel {
 	public static JTextArea inTextArea = new JTextArea();
 	inputTextArea()
 	{
-		inTextArea.setLineWrap(true);
 		inTextArea.setText("請在此輸入數量");
     
 		this.add(inTextArea);
