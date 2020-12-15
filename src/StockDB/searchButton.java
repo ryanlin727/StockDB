@@ -89,7 +89,7 @@ public class searchButton extends DBbutton {
 	                
 	                if(flag==0)
 	                {
-	                	StockDB.searchresult.jTextArea.setText(brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	                	StockDB.searchresult.jTextArea.setText(brand + " " + model + " " + size + " " + amount + " " + action + " " + in_warehouse_time);
 	                	flag=1;
 	                }
 	                else
@@ -101,8 +101,8 @@ public class searchButton extends DBbutton {
 	                	count+=amount;
 	                
 	                System.out.print(brand+" ");
-	                System.out.print(size+" ");
 	                System.out.print(model+" ");
+	                System.out.print(size+" ");
 	                System.out.print(amount+" ");
 	                System.out.print(action+" ");
 	                System.out.print(in_warehouse_time+" ");

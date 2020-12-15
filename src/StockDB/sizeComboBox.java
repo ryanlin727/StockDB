@@ -21,23 +21,25 @@ public class sizeComboBox extends Panel implements ItemListener{
 	{
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
-			String itemSize = (String) e.getItem();  
-			try
+			String itemSize = (String) e.getItem();
+			if(StockDB.typeComboBox.typeComboBox.getSelectedItem()!="請選擇系列")
 			{
-				BufferedReader reader = null;
-				
-				ComboBoxVal = (String) StockDB.typeComboBox.typeComboBox.getSelectedItem();
-				
-				sizeComboBox.removeAllItems();
-				sizeComboBox.addItem("請選擇尺寸");
+				try
+				{
+					BufferedReader reader = null;
 
-				try{
-					reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+StockDB.typeComboBox.ComboBoxVal+"/"+ComboBoxVal+".txt"),"UTF-8"));
-					String str = null;
-					while ((str = reader.readLine()) != null) 
-					{
-						sizeComboBox.addItem(str);
-					}
+					ComboBoxVal = (String) StockDB.typeComboBox.typeComboBox.getSelectedItem();
+
+					sizeComboBox.removeAllItems();
+					sizeComboBox.addItem("請選擇尺寸");
+
+					try{
+						reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+StockDB.typeComboBox.ComboBoxVal+"/"+ComboBoxVal+".txt"),"UTF-8"));
+						String str = null;
+						while ((str = reader.readLine()) != null) 
+						{
+							sizeComboBox.addItem(str);
+						}
 					} catch (FileNotFoundException event) {
 						event.printStackTrace();
 					} catch (IOException event) {
@@ -50,8 +52,13 @@ public class sizeComboBox extends Panel implements ItemListener{
 						}
 					}
 				}
-
-			catch(Exception ex){}  
+				catch(Exception ex){}  
+			}
+			else
+			{
+				sizeComboBox.removeAllItems();
+				sizeComboBox.addItem("請選擇尺寸");
+			}
 		}  
 	}
 }

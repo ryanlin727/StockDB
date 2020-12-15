@@ -21,20 +21,22 @@ public class typeComboBox extends Panel implements ItemListener {
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
-			String itemSize = (String) e.getItem();  
-			try
+			String itemSize = (String) e.getItem();
+			if(StockDB.brandComboBox.brandComboBox.getSelectedItem()!="請選擇廠牌")
 			{
-				BufferedReader reader = null;
-				typeComboBox.removeAllItems();
-				typeComboBox.addItem("請選擇系列");
-				ComboBoxVal = (String) StockDB.brandComboBox.brandComboBox.getSelectedItem();
-				try{
-					reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+ComboBoxVal+"/type.txt"),"UTF-8"));
-					String str = null;
-					while ((str = reader.readLine()) != null) 
-					{
-						typeComboBox.addItem(str);
-					}
+				try
+				{
+					BufferedReader reader = null;
+					typeComboBox.removeAllItems();
+					typeComboBox.addItem("請選擇系列");
+					ComboBoxVal = (String) StockDB.brandComboBox.brandComboBox.getSelectedItem();
+					try{
+						reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+ComboBoxVal+"/type.txt"),"UTF-8"));
+						String str = null;
+						while ((str = reader.readLine()) != null) 
+						{
+							typeComboBox.addItem(str);
+						}
 					} catch (FileNotFoundException event) {
 						event.printStackTrace();
 					} catch (IOException event) {
@@ -46,9 +48,15 @@ public class typeComboBox extends Panel implements ItemListener {
 							event.printStackTrace();
 						}
 					}
-					
+
 				}
-			catch(Exception ex){}  
+				catch(Exception ex){}
+			}
+			else
+			{
+				typeComboBox.removeAllItems();
+				typeComboBox.addItem("請選擇系列");
+			}
 		}
 		
 	}

@@ -66,14 +66,14 @@ public class historyTextArea extends Panel {
 	            String in_warehouse_time = rs.getString("in_warehouse_time");
 	            if(flag==0)
 	            {
-	            	StockDB.historyTextArea.jTextArea.setText(brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	            	StockDB.historyTextArea.jTextArea.setText(brand + " " + model + " " + size  + " " + amount + " " + action + " " + in_warehouse_time);
 	            	flag=1;
 	            }
 	            else
-	            	StockDB.historyTextArea.jTextArea.setText(StockDB.historyTextArea.jTextArea.getText()+ "\n" +brand + " " + size + " " + model + " " + amount + " " + action + " " + in_warehouse_time);
+	            	StockDB.historyTextArea.jTextArea.setText(StockDB.historyTextArea.jTextArea.getText()+ "\n" +brand + " " + model + " " + size + " " + amount + " " + action + " " + in_warehouse_time);
 	            System.out.print(brand+" ");
-	            System.out.print(size+" ");
 	            System.out.print(model+" ");
+	            System.out.print(size+" ");
 	            System.out.print(amount+" ");
 	            System.out.print(action+" ");
 	            System.out.print(in_warehouse_time+" ");
