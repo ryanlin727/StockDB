@@ -4,22 +4,25 @@ import java.awt.*;
 
 public class northBlock extends Panel {
 	
-		public mainbrandComboBox comboBox1;
-		public maintypeComboBox comboBox2;
-		public mainsizeComboBox comboBox3;
-		public mainactionComboBox comboBox4;
-		northBlock()
+		mainbrandComboBox comboBox1;
+		maintypeComboBox comboBox2;
+		mainsizeComboBox comboBox3;
+		mainactionComboBox comboBox4;
+		DBinputWin parent;
+		northBlock(DBinputWin p)
 		{
+			parent=p;
+			
 			this.setLayout(new FlowLayout());
 			
-			comboBox1=new mainbrandComboBox();
-			this.add(comboBox1);
-			comboBox2=new maintypeComboBox();
-			this.add(comboBox2);
-			comboBox3=new mainsizeComboBox();
-			this.add(comboBox3);
-			comboBox4=new mainactionComboBox();
-			this.add(comboBox4);
+			comboBox1=new mainbrandComboBox(this);
+			this.add(comboBox1.brandComboBox);
+			comboBox2=new maintypeComboBox(this);
+			this.add(comboBox2.typeComboBox);
+			comboBox3=new mainsizeComboBox(this);
+			this.add(comboBox3.sizeComboBox);
+			comboBox4=new mainactionComboBox(this);
+			this.add(comboBox4.actionComboBox);
 		}
 		
 }

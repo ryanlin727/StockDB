@@ -4,21 +4,24 @@ import java.awt.*;
 
 public class searchNorthBlock extends Panel {
 
-	public brandComboBox comboBox1;
-	public typeComboBox comboBox2;
-	public sizeComboBox comboBox3;
-	public static actionComboBox comboBox4;
-	searchNorthBlock()
+	brandComboBox comboBox1;
+	typeComboBox comboBox2;
+	sizeComboBox comboBox3;
+	actionComboBox comboBox4;
+	DBsearchWin parent;
+	
+	searchNorthBlock(DBsearchWin p)
 	{
+		parent=p;
 		this.setLayout(new FlowLayout());
 		
-		comboBox1=new brandComboBox();
-		this.add(comboBox1);
-		comboBox2=new typeComboBox();
-		this.add(comboBox2);
-		comboBox3=new sizeComboBox();
-		this.add(comboBox3);
-		comboBox4=new actionComboBox();
-		this.add(comboBox4);
+		comboBox1=new brandComboBox(this);
+		this.add(comboBox1.brandComboBox);
+		comboBox2=new typeComboBox(this);
+		this.add(comboBox2.typeComboBox);
+		comboBox3=new sizeComboBox(this);
+		this.add(comboBox3.sizeComboBox);
+		comboBox4=new actionComboBox(this);
+		this.add(comboBox4.actionComboBox);
 	}
 }

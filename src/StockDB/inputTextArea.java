@@ -3,12 +3,13 @@ package StockDB;
 import java.awt.*;
 import javax.swing.*;
 
-public class inputTextArea extends Panel {
-	public static JTextArea inTextArea = new JTextArea();
-	inputTextArea()
+public class inputTextArea{
+	JTextArea inTextArea = new JTextArea();
+	centerBlock parent;
+	inputTextArea(centerBlock p)
 	{
+		parent=p;
+		
 		inTextArea.setText("請在此輸入數量");
-    
-		this.add(inTextArea);
 	}
 }

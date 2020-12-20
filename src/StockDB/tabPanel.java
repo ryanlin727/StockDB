@@ -13,8 +13,8 @@ public class tabPanel implements ChangeListener {
 	{
 		parent=p;
 		JTabbedPane Tab=new JTabbedPane(JTabbedPane.TOP);
-		Tab.add("块家Α",new DBinputWin());
-	    Tab.add("琩高家Α",new DBsearchWin());
+		Tab.add("块家Α",new DBinputWin(this));
+	    Tab.add("琩高家Α",new DBsearchWin(this));
 	    Tab.add("め戈",new DBclientWin());
 	    Tab.addChangeListener(this);
 	    

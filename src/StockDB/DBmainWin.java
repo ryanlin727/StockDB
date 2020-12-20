@@ -7,11 +7,12 @@ import javax.swing.event.*;
 
 public class DBmainWin extends JFrame {
 	Dimension size=new Dimension(600,380);
-	
-	public tabPanel tabPanel;
-
-	DBmainWin()
+	tabPanel tabPanel;
+	UI parent;
+	DBmainWin(UI p)
 	{
+		parent=p;
+		
 		this.setSize(size);
 		this.setLayout(new BorderLayout());
 		

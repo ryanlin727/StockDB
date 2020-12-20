@@ -6,12 +6,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class brandComboBox extends Panel{
-	public static String ComboBoxVal;
-	public static JComboBox brandComboBox = new JComboBox();
-
-	brandComboBox()
+public class brandComboBox{
+	String ComboBoxVal;
+	JComboBox brandComboBox = new JComboBox();
+	searchNorthBlock parent;
+	brandComboBox(searchNorthBlock p)
 	{	
+		parent=p;
+		
 		brandComboBox.addItem("½Ð¿ï¾Ü¼tµP");
 		
 		BufferedReader reader = null;// https://dotblogs.com.tw/cylcode/2018/09/21/170510
@@ -33,11 +35,6 @@ public class brandComboBox extends Panel{
 		    e.printStackTrace();
 		  }
 		}
-		
-		
-		this.setLayout(new FlowLayout());
-		this.add(brandComboBox);
-
 	}
 	
 }

@@ -5,15 +5,17 @@ import java.sql.*;
 
 import javax.swing.*;
 
-public class historyTextArea extends Panel {
-	public static JTextArea jTextArea = new JTextArea(10,50);
-	public static JScrollPane jScrollPane = new JScrollPane(jTextArea);
+public class historyTextArea{
+	JTextArea jTextArea = new JTextArea(10,50);
+	JScrollPane jScrollPane = new JScrollPane(jTextArea);
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	DBinputWin parent;
 	
-	public static Connection conn = null;
-	public static PreparedStatement stmt = null;
-	
-	historyTextArea()
+	historyTextArea(DBinputWin p)
 	{
+		parent=p;
+		
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,15 +30,12 @@ public class historyTextArea extends Panel {
 		jScrollPane.setBounds(10,10,200,100);
 	    jTextArea.setLineWrap(true);
 	    jTextArea.setText("¾ú¥v¿é¤J¬ö¿ý");
+	    jTextArea.setEditable(false);
 	    
 	    history();
-	    
-	    
-	    
-	    this.add(jScrollPane);
 	}
 
-	private static Connection getConnection() throws SQLException {
+	private Connection getConnection() throws SQLException {
 		  String serverName = "localhost";
 		  String database = "StockDB";
 		  String url = "jdbc:mysql://" + serverName + "/" + database;
@@ -46,7 +45,7 @@ public class historyTextArea extends Panel {
 		  return conn;
 	}
 	
-	public static void history() {
+	public void history() {
 		try
 	    {
 	    	conn = getConnection();
@@ -55,7 +54,7 @@ public class historyTextArea extends Panel {
 			rs=stmt.executeQuery();
 			int flag=0;
 			
-			StockDB.historyTextArea.jTextArea.setText("");
+			this.jTextArea.setText("");
 	        while (rs.next())
 	        {
 	        	String brand  = rs.getString("brand");
@@ -66,11 +65,11 @@ public class historyTextArea extends Panel {
 	            String in_warehouse_time = rs.getString("in_warehouse_time");
 	            if(flag==0)
 	            {
-	            	StockDB.historyTextArea.jTextArea.setText(brand + " " + model + " " + size  + " " + amount + " " + action + " " + in_warehouse_time);
+	            	this.jTextArea.setText(brand + " " + model + " " + size  + " " + amount + " " + action + " " + in_warehouse_time);
 	            	flag=1;
 	            }
 	            else
-	            	StockDB.historyTextArea.jTextArea.setText(StockDB.historyTextArea.jTextArea.getText()+ "\n" +brand + " " + model + " " + size + " " + amount + " " + action + " " + in_warehouse_time);
+	            	this.jTextArea.setText(this.jTextArea.getText()+ "\n" +brand + " " + model + " " + size + " " + amount + " " + action + " " + in_warehouse_time);
 	            System.out.print(brand+" ");
 	            System.out.print(model+" ");
 	            System.out.print(size+" ");

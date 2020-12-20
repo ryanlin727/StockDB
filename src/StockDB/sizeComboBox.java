@@ -5,36 +5,36 @@ import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 
-public class sizeComboBox extends Panel implements ItemListener{
-	public String ComboBoxVal;
-	public static JComboBox sizeComboBox = new JComboBox();
-	sizeComboBox()
+public class sizeComboBox implements ItemListener{
+	String ComboBoxVal;
+	JComboBox sizeComboBox = new JComboBox();
+	searchNorthBlock parent;
+	sizeComboBox(searchNorthBlock p)
 	{
-		StockDB.typeComboBox.typeComboBox.addItemListener(this); 
+		parent=p;
+		
+		parent.comboBox2.typeComboBox.addItemListener(this); 
 		sizeComboBox.removeAllItems();
 		sizeComboBox.addItem("請選擇尺寸");
-		
-		this.setLayout(new FlowLayout());
-		this.add(sizeComboBox);
 	}
 	public void itemStateChanged(ItemEvent e)
 	{
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
 			String itemSize = (String) e.getItem();
-			if(StockDB.typeComboBox.typeComboBox.getSelectedItem()!="請選擇系列")
+			if(parent.comboBox2.typeComboBox.getSelectedItem()!="請選擇系列")
 			{
 				try
 				{
 					BufferedReader reader = null;
 
-					ComboBoxVal = (String) StockDB.typeComboBox.typeComboBox.getSelectedItem();
+					ComboBoxVal = (String) parent.comboBox2.typeComboBox.getSelectedItem();
 
 					sizeComboBox.removeAllItems();
 					sizeComboBox.addItem("請選擇尺寸");
 
 					try{
-						reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+StockDB.typeComboBox.ComboBoxVal+"/"+ComboBoxVal+".txt"),"UTF-8"));
+						reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+parent.comboBox2.ComboBoxVal+"/"+ComboBoxVal+".txt"),"UTF-8"));
 						String str = null;
 						while ((str = reader.readLine()) != null) 
 						{

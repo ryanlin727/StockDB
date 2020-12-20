@@ -14,8 +14,8 @@ public class centerBlock extends Panel {
 		btnBlock=new buttonBlock(this);
 		this.add(btnBlock, BorderLayout.SOUTH);
 		
-		inTextArea = new inputTextArea();
-		this.add(inTextArea, BorderLayout.CENTER);
+		inTextArea = new inputTextArea(this);
+		this.add(inTextArea.inTextArea, BorderLayout.CENTER);
 		
 		
 	}

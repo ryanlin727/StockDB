@@ -3,12 +3,14 @@ package StockDB;
 import java.awt.*;
 
 public class searchCenterBlock extends Panel {
-	public searchButton srButton;
-	
-	searchCenterBlock()
+	searchButton srButton;
+	DBsearchWin parent;
+	searchCenterBlock(DBsearchWin p)
 	{
+		parent=p;
+		
 		this.setLayout(new FlowLayout());
-		srButton = new searchButton();
+		srButton = new searchButton(this);
 		this.add(srButton);
 	}
 }

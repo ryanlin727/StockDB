@@ -6,12 +6,15 @@ import java.awt.event.ItemListener;
 import java.io.*;
 import javax.swing.*;
 
-public class mainbrandComboBox extends Panel{
-	public static String ComboBoxVal;
-	public static JComboBox brandComboBox = new JComboBox();
-//	public clearButton clButton;
-	mainbrandComboBox()
+public class mainbrandComboBox{
+	String ComboBoxVal;
+	JComboBox brandComboBox = new JComboBox();
+	northBlock parent;
+	
+	mainbrandComboBox(northBlock p)
 	{	
+		parent=p;
+		
 		brandComboBox.addItem("½Ð¿ï¾Ü¼tµP");
 		
 		BufferedReader reader = null;
@@ -34,11 +37,6 @@ public class mainbrandComboBox extends Panel{
 		  }
 		}
 		
-		
-		this.setLayout(new FlowLayout());
-		this.add(brandComboBox);
-//		clButton = new clearButton(this);
-//		this.add(clButton);
 
 	}
 	

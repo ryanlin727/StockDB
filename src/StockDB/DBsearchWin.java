@@ -5,24 +5,22 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class DBsearchWin extends JPanel {
-	public searchresult srresult;
-	public searchkey srkey; //自行輸入關鍵字的版本
-	public searchCenterBlock srcenter; 
-	public searchNorthBlock srnorth;//目前使用下拉是選單選擇查詢
-	
-	public DBsearchWin()
+	searchresult srresult;
+	searchCenterBlock srcenter; 
+	searchNorthBlock srnorth;
+	tabPanel parent;
+	public DBsearchWin(tabPanel p)
 	{	
-//		srkey = new searchkey();
-//		this.add(srkey, BorderLayout.NORTH);
+		parent=p;
 		
-		srnorth=new searchNorthBlock();
+		srnorth=new searchNorthBlock(this);
 		this.add(srnorth, BorderLayout.NORTH);
 		
-		srcenter = new searchCenterBlock();
+		srcenter = new searchCenterBlock(this);
 		this.add(srcenter, BorderLayout.CENTER);
 		
-		srresult = new searchresult();
-		this.add(srresult, BorderLayout.SOUTH);
+		srresult = new searchresult(this);
+		this.add(srresult.jScrollPane, BorderLayout.SOUTH);
 
 	}
 }

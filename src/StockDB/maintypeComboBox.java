@@ -5,31 +5,31 @@ import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 
-public class maintypeComboBox extends Panel implements ItemListener{
-	public static String ComboBoxVal;
-	public static JComboBox typeComboBox = new JComboBox();
-	
-	maintypeComboBox()
+public class maintypeComboBox implements ItemListener{
+	String ComboBoxVal;
+	JComboBox typeComboBox = new JComboBox();
+	northBlock parent;
+	maintypeComboBox(northBlock p)
 	{
-		StockDB.mainbrandComboBox.brandComboBox.addItemListener(this); 
+		parent=p;
+		parent.comboBox1.brandComboBox.addItemListener(this); 
 		typeComboBox.removeAllItems();
 		typeComboBox.addItem("請選擇系列");
 		
-		this.add(typeComboBox);
 	}
 
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
 			String itemSize = (String) e.getItem();  
-			if(StockDB.mainbrandComboBox.brandComboBox.getSelectedItem()!="請選擇廠牌")
+			if(parent.comboBox1.brandComboBox.getSelectedItem()!="請選擇廠牌")
 			{
 				try
 				{
 					BufferedReader reader = null;
 					typeComboBox.removeAllItems();
 					typeComboBox.addItem("請選擇系列");
-					ComboBoxVal = (String) StockDB.mainbrandComboBox.brandComboBox.getSelectedItem();
+					ComboBoxVal = (String) parent.comboBox1.brandComboBox.getSelectedItem();
 					try{
 						reader = new BufferedReader(new InputStreamReader(new FileInputStream("./"+ComboBoxVal+"/type.txt"),"UTF-8"));
 						String str = null;

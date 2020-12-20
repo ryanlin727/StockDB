@@ -4,22 +4,23 @@ import java.awt.*;
 import javax.swing.*;
 
 public class DBclientWin extends JPanel {
-	public clientButton clButton;
+	clientButton clButton;
 	DBclientWin()
 	{
-		JTextArea inTextArea = new JTextArea();
+		JTextArea inTextArea = new JTextArea(1,50);
 		inTextArea.setLineWrap(true);
 		inTextArea.setText("請在此輸入客戶資料");
-		inTextArea.setSize(400,50);
 		this.add(inTextArea, BorderLayout.NORTH);
 		
-		clButton = new clientButton();
+		clButton = new clientButton(this);
 		this.add(clButton, BorderLayout.CENTER);
 		
-		JTextArea reTextArea = new JTextArea();
+		JTextArea reTextArea = new JTextArea(10,50);
+		JScrollPane jScrollPane = new JScrollPane(reTextArea);
 		reTextArea.setLineWrap(true);
-		reTextArea.setText("客戶資料\n\n\n\n\n\n\n\n\n\n");
-		reTextArea.setSize(470,50);
-		this.add(reTextArea, BorderLayout.SOUTH);
+		reTextArea.setText("客戶資料");
+		reTextArea.setEditable(false);
+
+		this.add(jScrollPane, BorderLayout.SOUTH);
 	}
 }
