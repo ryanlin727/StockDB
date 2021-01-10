@@ -2,6 +2,8 @@ package StockDB;
 
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
 public class searchButton extends DBbutton {
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -44,10 +46,12 @@ public class searchButton extends DBbutton {
 	           sql = "SELECT * FROM tires";
 	           ResultSet rs = null;
 	           int flag=0;
+	           int flag2=0;
 	           
 	           if(parent.parent.srnorth.comboBox1.brandComboBox.getSelectedItem()=="請選擇廠牌")
 	           {
-	        	   parent.parent.srresult.jTextArea.setText("請選擇查詢條件");
+	        	   stmt=conn.prepareStatement("SELECT * FROM tires ORDER BY in_warehouse_time");
+	        	   rs = stmt.executeQuery();
 	           }
 	           else if(parent.parent.srnorth.comboBox2.typeComboBox.getSelectedItem()=="請選擇系列")
 	           {
@@ -79,7 +83,10 @@ public class searchButton extends DBbutton {
 	        	   stmt.setString(4,(String)parent.parent.srnorth.comboBox4.actionComboBox.getSelectedItem());
 	        	   rs = stmt.executeQuery();
 	           }
-	           parent.parent.srresult.jTextArea.setText("");
+	           else
+	           {
+	        	   parent.parent.srresult.jTextArea.setText("請至少選擇廠牌作為查詢條件");
+	           }
 	           while (rs.next())
 	           {
 	        	   	String brand  = rs.getString("brand");
@@ -109,8 +116,21 @@ public class searchButton extends DBbutton {
 	                System.out.print(action+" ");
 	                System.out.print(in_warehouse_time+" ");
 	                System.out.print("\n");
+	                flag2=1;
 	           }
-	           parent.parent.srresult.jTextArea.setText(parent.parent.srresult.jTextArea.getText() + "\n" + "此次搜尋符合條件的庫存量還有" + count);
+	           if(flag2==1)
+	           {
+	        	   parent.parent.srresult.jTextArea.setText(parent.parent.srresult.jTextArea.getText() + "\n" + "此次搜尋符合條件的庫存量還有" + count);
+	        	   if(count<=10 && parent.parent.srnorth.comboBox4.actionComboBox.getSelectedItem()=="請選擇動作")
+		           {
+		        	   parent.parent.srresult.jTextArea.setText(parent.parent.srresult.jTextArea.getText() + "\n" + "本次查詢數量低下，請注意");
+		        	   JOptionPane.showMessageDialog(null, "本次查詢數量低下，請注意");
+		           }
+	           }
+	           else if(flag2==0)
+	        	   parent.parent.srresult.jTextArea.setText("此次搜尋沒有符合條件的紀錄");
+	           
+	           
 	           rs.close();
 	           stmt.close();
 	           conn.close();

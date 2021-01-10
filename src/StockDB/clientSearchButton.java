@@ -48,7 +48,7 @@ public class clientSearchButton extends DBbutton{
 	           
 	           if(str.length()==0)
 	           {
-	        	   stmt=conn.prepareStatement("SELECT * FROM customers ORDER BY last_time");
+	        	   stmt=conn.prepareStatement("SELECT * FROM customers ORDER BY last_time DESC");
 	        	   rs = stmt.executeQuery();
 	        	   
 	           }

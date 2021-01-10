@@ -48,7 +48,7 @@ public class clientresult{
 	    {
 	    	conn = getConnection();
 	    	ResultSet rs = null;
-			stmt=conn.prepareStatement("SELECT * FROM customers ORDER BY last_time");
+			stmt=conn.prepareStatement("SELECT * FROM customers ORDER BY last_time DESC");
 			rs=stmt.executeQuery();
 			int flag=0;
 			
